@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom"
+	xmlns:xe="http://www.ibm.com/xsp/coreex">
+	<xp:this.data>
+		<xp:dominoDocument var="document1" formName="profile"
+			action="openDocument">
+			<xp:this.documentId><![CDATA[#{javascript:@DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]")}]]></xp:this.documentId>
+		</xp:dominoDocument>
+	</xp:this.data>
+
+	<xp:this.navigationRules>
+		<xp:navigationRule outcome="cancel" viewId="/index.xsp"></xp:navigationRule>
+		<xp:navigationRule outcome="welcome" viewId="/index.xsp"></xp:navigationRule>
+		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
+	</xp:this.navigationRules>
+	<xp:this.beforePageLoad><![CDATA[#{javascript:if(session.getEffectiveUserName().equals("Anonymous")){
+	sessionScope.put("page", "start")
+	context.reloadPage()
+}}]]></xp:this.beforePageLoad>
+	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
+		navbarTopInverse="true" pageTitle="Setup Pushover">
+		<xp:this.facets>
+			<xp:div xp:key="facetMiddle">
+				<xp:div styleClass="actionbar">
+					<xp:div styleClass="">
+						<xp:button id="button1"
+							rendered="#{javascript:currentDocument.isEditable()}"
+							styleClass="btn btn-success">
+							<span
+								class="glyphicon glyphicon-floppy-disk">
+							</span>
+							&#160;Save
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="complete">
+								<xp:this.action>
+									<xp:saveDocument var="document1"></xp:saveDocument>
+								</xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+
+						<xp:button id="button2"
+							rendered="#{javascript:currentDocument.isEditable()}"
+							styleClass="btn btn-info">
+							<span
+								class="glyphicon glyphicon-floppy-saved">
+							</span>
+							&#160;Save &amp; Close
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="complete">
+								<xp:this.action>
+
+									<xp:actionGroup>
+										<xp:saveDocument
+											var="document1">
+										</xp:saveDocument>
+										<xp:executeScript>
+											<xp:this.script><![CDATA[#{javascript:return "close"}]]></xp:this.script>
+										</xp:executeScript>
+									</xp:actionGroup>
+								</xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+
+						<xp:button id="button3"
+							styleClass="btn btn-primary">
+							<span class="glyphicon glyphicon-edit">
+							</span>
+							&#160;Edit
+							<xp:this.rendered><![CDATA[#{javascript:var ctx = com.ibm.domino.xsp.module.nsf.NotesContext.getCurrent()
+return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEditable()}]]></xp:this.rendered>
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="complete">
+								<xp:this.action>
+									<xp:changeDocumentMode
+										mode="edit">
+									</xp:changeDocumentMode>
+								</xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+
+						<xp:button id="button4"
+							styleClass="btn btn-danger">
+							<span
+								class="glyphicon glyphicon-chevron-left">
+							</span>
+							&#160;
+							<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
+							<xp:eventHandler event="onclick"
+								submit="true" refreshMode="complete" immediate="true">
+								<xp:this.action><![CDATA[#{javascript:return (session.getEffectiveUserName().equals("Anonymous"))?"welcome":"cancel"}]]></xp:this.action>
+							</xp:eventHandler>
+						</xp:button>
+					</xp:div>
+				</xp:div>
+
+				<!-- form -->
+				<xp:div styleClass="form-group">
+					<xp:label value="User token" id="labelUsertoken"
+						for="profileUsertoken" disableTheme="true">
+					</xp:label>
+					<xp:inputText value="#{document1.profileUsertoken}"
+						id="profileUsertoken" styleClass="form-control">
+					</xp:inputText>
+				</xp:div>
+				<xp:div styleClass="form-group">
+					<xp:label value="Application token" id="label1"
+						for="profileApptoken" disableTheme="true">
+					</xp:label>
+					<xp:inputText value="#{document1.profileApptoken}"
+						id="profileApptoken" styleClass="form-control">
+					</xp:inputText>
+				</xp:div>
+			</xp:div>
+
+			<xp:div xp:key="facetHelp">Setup</xp:div>
+		</xp:this.facets>
+	</xc:_layoutBS3>
+</xp:view>

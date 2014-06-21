@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<note class='form' xmlns='http://www.lotus.com/dxl' version='9.0' maintenanceversion='1.1'
+ replicaid='C1257CFE00599083'>
+<noteinfo noteid='316' unid='CC08ECC03B458DA6C1257CFE005A5C84' sequence='1'>
+<created><datetime dst='true'>20140621T182659,24+02</datetime></created>
+<modified><datetime dst='true'>20140621T182659,31+02</datetime></modified>
+<revised><datetime dst='true'>20140621T182659,30+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20140621T182659,31+02</datetime></lastaccessed>
+<addedtofile><datetime dst='true'>20140621T182659,31+02</datetime></addedtofile></noteinfo>
+<updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
+<wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
+<item name='$TITLE'><text>$DBIcon</text></item>
+<item name='$Flags'><text>34Ci~Q</text></item>
+<item name='$ImagesWide' sign='true'><number>1</number></item>
+<item name='$ImagesHigh' sign='true'><number>1</number></item>
+<item name='$ImagesColorize' sign='true'><number>0</number></item>
+<item name='$FileSize' sign='true'><number>1076</number></item>
+<item name='$ImageData' sign='true'>
+<rawitemdata type='1'>
+mQAcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAH0AHAAAAAIAAAAAADQEAAABAAAAAQAAAAAAAAB8
+AD4EAAA0BDQEiVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAA
+AARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAadEVYdFNvZnR3YXJlAFBhaW50
+Lk5FVCB2My41LjExR/NCNwAAA6NJREFUWEfFl99LFFEUx332yT+hX2oERT4EEQT9IOihCHrJfCqi
+l6ionnsqgn7oQw9BkFoZ2S8xqRQztKJEMzXDUsrCULPUFXN/787Ons73zr07s7Mz087uQ1/46M6Z
+e889c++Zc++U5KuV9ctlTA1zgxlkFpikBL9hwz20KZPdihc7q2AamAhDeYK26FMh3fgXdy5lapkE
+4zRIPqAvfJRKt/mJO5Qzo4yT00KAr3Lp3lvcsIqZlx19sabBwOkeA59VchhncQM8ed6Db38YoksD
+cXo9rdGvsE6xFAmmQzo9+JKknY9C9j7w7TwTfANrnte0V7eH6e1PjTSdxP/L7+N0oidKx7qjdIV/
+z3IwEII51Bmx98cYuTnBxjpLI0eq7gTp6fckpdl556RG23gGYN/QFKTdrWHa1xYW15vuBulPHK2I
+5iJpqmjM8VUnhzXEhkoG77O9YYZdLSGaCuqUZr/n+mLCdnU4ToFomnRjLDrba9hB95RmGFkqMAsY
+q1IOLwJotNzMAWu9wANBtYNxYdvIsxFOypFZS/zE624FM336Z3n+pbBkym6hUQ2OCudaZMp5+sYW
+DWfDcylaLbP84kBM2JSujRiBgbU3lzPB4e+WeznJCDBmGQJA6XRqIDj9KiocQYefGwmFNVWJBiU4
+vs3N5tOf5IRUGl1IZewO1CCAepsxi47JpHC0GEtn3vFTL80BoNaJZKY92owvmsEd52DUPQfqEcCQ
+zZhFL79mUNcPLWPDUylhivc8Ntf4wjtzaXo4EVdJuwtDCCBgM2Zx4FmYPgVS1DyeENfVfG1V36wZ
+2MH2CCXkw08s6eK1VfdcCCAAzWb05AXPhFVHu4y8OML5oRLvAycraoG9rwOarwB2cGlV7zw0wyV3
+/5MwtXw1ihMCqOPX1KHwuCEC8FwCK01jCWNkKZRaVLo3Mxqd74/lM+V2xBJ4JqECziOa+fgotetv
+B2mFQ1sfiCT0fA0V2HCsuv7RLDxFIF5Dz0IEsKa/eaqVkpzpLtXNL6IQeZZicMZSDaG2b2bhKQKj
+FMv9wHUzQiH5zHXAqr25u1shGJsRxBeu23FNR0QOa6jfUniKIHs7htjgeCCx7uuQKjxFkn0ggdiY
+cyTbej/EyafTPJ8FwMi8uR0XgfORDOIbvg6lBeB+KFXiBgUfy/8BfHofy5W44f/7MFHiDsgJJGax
+n2bw4e/TzCru/H8+Tu1iZ+rzHHsHPsWxi2IrB/gNG+75+DwvKfkLDEV0buxTpeEAAAAASUVORK5C
+YII=
+</rawitemdata></item>
+<item name='$MimeType' sign='true'><text>image/png</text></item>
+<item name='$FileModDT' sign='true'><datetime dst='true'>20140621T182636,65+02</datetime></item>
+<item name='$ImageNames' sign='true'><text>C:\Users\Oliver\Desktop\tmp\pushover_icon.png</text></item>
+<item name='$DesignerVersion'><text>8.5.3</text></item></note>
+
