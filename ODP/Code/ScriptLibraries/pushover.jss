@@ -1,15 +1,19 @@
 function notify(){
 	var p = new org.openntf.bstemplate.Pushover();
 	
-	// set your token here!
-	p.setUserToken("u4CcNUVHgBqg1iiqLFeD8AVzY6YVxE");
-	// app token here
-	p.setAppToken("aEPcYMGyvwbm4VXibPJPJF7YTmFwGj");
 	
-	
-	p.setMessage("Ein neuer Kommentar wurde gepostet");
+	var profileId = @DbLookup(database.getFilePath(),"profiles","profile", "Form", "[RETURNDOCUMENTUNIQUEID]");
+	var profile:NotesDocument = database.getDocumentByUNID(profileId);
 	try {
+		p.setUserToken(profile.getItemValueString("profileUsertoken"));
+		p.setAppToken(profile.getItemValueString("profileApptoken"));	
+	
+		p.setMessage(sessionScope.message);
+		p.setUrl(sessionScope.url);
+		
 		p.send();
-	} catch(e){
+	
+	} catch(e) {
+		
 	}
 }
