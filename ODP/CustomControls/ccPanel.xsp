@@ -12,12 +12,7 @@
 			<xp:callback facetName="body" id="callback3"
 				loaded="${javascript:!compositeData.hideBody}">
 			</xp:callback>
-			</xp:div>			
-			
-			<xp:callback facetName="body" id="callback1"
-				loaded="${javascript:compositeData.hideBody}">
-			</xp:callback>
-		
+		</xp:div>
 		<xp:div disableTheme="true" styleClass="panel-footer"
 			rendered="#{javascript:compositeData.footer}">
 			<xp:callback facetName="footer" id="callback2"></xp:callback>

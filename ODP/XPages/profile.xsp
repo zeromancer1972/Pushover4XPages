@@ -3,7 +3,7 @@
 	xmlns:xe="http://www.ibm.com/xsp/coreex">
 	<xp:this.data>
 		<xp:dominoDocument var="document1" formName="profile"
-			action="openDocument">
+			action="editDocument">
 			<xp:this.documentId><![CDATA[#{javascript:@DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]")}]]></xp:this.documentId>
 		</xp:dominoDocument>
 	</xp:this.data>
@@ -14,8 +14,7 @@
 		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
 	</xp:this.navigationRules>
 	<xp:this.beforePageLoad><![CDATA[#{javascript:if(session.getEffectiveUserName().equals("Anonymous")){
-	sessionScope.put("page", "start")
-	context.reloadPage()
+	context.redirectToHome();
 }}]]></xp:this.beforePageLoad>
 	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
 		navbarTopInverse="true" pageTitle="Setup Pushover">
@@ -99,7 +98,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						for="profileUsertoken" disableTheme="true">
 					</xp:label>
 					<xp:inputText value="#{document1.profileUsertoken}"
-						id="profileUsertoken" styleClass="form-control">
+						id="profileUsertoken" styleClass="form-control" password="true" redisplay="true">
 					</xp:inputText>
 				</xp:div>
 				<xp:div styleClass="form-group">
@@ -107,7 +106,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						for="profileApptoken" disableTheme="true">
 					</xp:label>
 					<xp:inputText value="#{document1.profileApptoken}"
-						id="profileApptoken" styleClass="form-control">
+						id="profileApptoken" styleClass="form-control" password="true" redisplay="true">
 					</xp:inputText>
 				</xp:div>
 			</xp:div>

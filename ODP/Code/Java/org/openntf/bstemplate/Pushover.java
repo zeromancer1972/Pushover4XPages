@@ -86,7 +86,6 @@ public class Pushover implements Serializable {
 		while ((line = rd.readLine()) != null) {
 			responseText += line;
 		}
-
 		
 		response.close();
 		httpclient.close();
