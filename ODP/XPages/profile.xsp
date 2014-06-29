@@ -13,7 +13,7 @@
 		<xp:navigationRule outcome="welcome" viewId="/index.xsp"></xp:navigationRule>
 		<xp:navigationRule outcome="close" viewId="/index.xsp"></xp:navigationRule>
 	</xp:this.navigationRules>
-	<xp:this.beforePageLoad><![CDATA[#{javascript:if(session.getEffectiveUserName().equals("Anonymous")){
+	<xp:this.beforePageLoad><![CDATA[#{javascript:if(!database.queryAccessRoles(session.getEffectiveUserName()).contains("[Admin]")){
 	context.redirectToHome();
 }}]]></xp:this.beforePageLoad>
 	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
@@ -30,7 +30,7 @@
 							</span>
 							&#160;Save
 							<xp:eventHandler event="onclick"
-								submit="true" refreshMode="complete">
+								submit="true" refreshMode="norefresh">
 								<xp:this.action>
 									<xp:saveDocument var="document1"></xp:saveDocument>
 								</xp:this.action>
@@ -45,7 +45,7 @@
 							</span>
 							&#160;Save &amp; Close
 							<xp:eventHandler event="onclick"
-								submit="true" refreshMode="complete">
+								submit="true" refreshMode="norefresh">
 								<xp:this.action>
 
 									<xp:actionGroup>
@@ -85,7 +85,7 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 							&#160;
 							<xp:this.value><![CDATA[#{javascript:currentDocument.isEditable() ? "Cancel" : "Close"}]]></xp:this.value>
 							<xp:eventHandler event="onclick"
-								submit="true" refreshMode="complete" immediate="true">
+								submit="true" refreshMode="norefresh" immediate="true">
 								<xp:this.action><![CDATA[#{javascript:return (session.getEffectiveUserName().equals("Anonymous"))?"welcome":"cancel"}]]></xp:this.action>
 							</xp:eventHandler>
 						</xp:button>
@@ -98,7 +98,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						for="profileUsertoken" disableTheme="true">
 					</xp:label>
 					<xp:inputText value="#{document1.profileUsertoken}"
-						id="profileUsertoken" styleClass="form-control" password="true" redisplay="true">
+						id="profileUsertoken" styleClass="form-control" password="true"
+						redisplay="true" autocomplete="off">
 					</xp:inputText>
 				</xp:div>
 				<xp:div styleClass="form-group">
@@ -106,7 +107,8 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						for="profileApptoken" disableTheme="true">
 					</xp:label>
 					<xp:inputText value="#{document1.profileApptoken}"
-						id="profileApptoken" styleClass="form-control" password="true" redisplay="true">
+						id="profileApptoken" styleClass="form-control" password="true"
+						redisplay="true" autocomplete="off">
 					</xp:inputText>
 				</xp:div>
 			</xp:div>

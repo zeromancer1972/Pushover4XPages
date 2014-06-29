@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
+	<xp:this.beforePageLoad><![CDATA[#{javascript:if(!database.queryAccessRoles(session.getEffectiveUserName()).contains("[Admin]")){
+	context.redirectToHome();
+}}]]></xp:this.beforePageLoad>
+	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
+		navbarTopInverse="true" pageTitle="Logs">
+		<xp:this.facets>
+			<xp:div xp:key="facetMiddle">
+				<xp:viewPanel rows="30" id="viewPanel1" viewStyle="width:100%">
+					<xp:this.facets>
+						<xp:pager partialRefresh="true" layout="Previous Group Next"
+							xp:key="headerPager" id="pager1">
+						</xp:pager>
+					</xp:this.facets>
+					<xp:this.data>
+						<xp:dominoView var="view1" viewName="logs"></xp:dominoView>
+					</xp:this.data>
+					<xp:viewColumn columnName="$1" id="viewColumn1">
+						<xp:this.converter>
+							<xp:convertDateTime type="both"></xp:convertDateTime>
+						</xp:this.converter>
+						<xp:viewColumnHeader value="created" id="viewColumnHeader1">
+						</xp:viewColumnHeader>
+					</xp:viewColumn>
+					<xp:viewColumn columnName="poMessage" id="viewColumn2">
+						<xp:viewColumnHeader value="message" id="viewColumnHeader2">
+						</xp:viewColumnHeader>
+					</xp:viewColumn>
+				</xp:viewPanel>
+			</xp:div>
+		</xp:this.facets>
+
+	</xc:_layoutBS3>
+</xp:view>

@@ -187,3 +187,10 @@ a.nav-disabled {
 .pagination {
 	margin: 0;
 }
+
+.bigicon {
+	font-size: 94px;
+	opacity: 0.2;
+	filter: alpha(opacity =           20);
+	margin: 0 0 0 20px;
+}

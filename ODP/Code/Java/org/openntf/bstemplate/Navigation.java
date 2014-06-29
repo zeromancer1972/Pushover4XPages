@@ -14,17 +14,21 @@ public class Navigation implements Serializable {
 	private final List<Page> navigation;
 
 	public Navigation() {
+		boolean admin = false;
+		
 		this.navigation = new ArrayList<Page>();
 		try {
-			this.navigation
-					.add(new Page("Setup", "profile.xsp", "glyphicon glyphicon-wrench", false,
-							ExtLibUtil.getCurrentDatabase().queryAccessRoles(
-									ExtLibUtil.getCurrentSession().getEffectiveUserName()).contains(
-									"[Admin]")));
+			admin = ExtLibUtil.getCurrentDatabase().queryAccessRoles(
+					ExtLibUtil.getCurrentSession().getEffectiveUserName()).contains("[Admin]");
 		} catch (NotesException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.navigation.add(new Page("Setup", "profile.xsp", "fa fa-cogs", false,
+				admin));
+		this.navigation.add(new Page("Logs", "log.xsp", "fa fa-tasks", false,
+				admin));
+
 	}
 
 	public List<Page> getNavigation() {

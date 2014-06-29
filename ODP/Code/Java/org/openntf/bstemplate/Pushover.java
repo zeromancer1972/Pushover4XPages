@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -16,8 +19,11 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
+import org.openntf.domino.Document;
+import org.openntf.domino.utils.XSPUtil;
 
 import com.ibm.commons.util.io.json.JsonException;
+import com.ibm.xsp.extlib.util.ExtLibUtil;
 
 /**
  * Refer to https://pushover.net/api for more information
@@ -50,6 +56,7 @@ public class Pushover implements Serializable {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void send() throws ClientProtocolException, IOException, JsonException,
 			IllegalStateException {
 		if (this.userToken.equals("") || this.appToken.equals("") || this.message.equals("")) {
@@ -75,7 +82,8 @@ public class Pushover implements Serializable {
 		nvps.add(new BasicNameValuePair("user", this.userToken));
 		nvps.add(new BasicNameValuePair("token", this.appToken));
 		nvps.add(new BasicNameValuePair("message", this.message));
-		nvps.add(new BasicNameValuePair("url", this.url));
+		if (this.url != null)
+			nvps.add(new BasicNameValuePair("url", this.url));
 		if (this.url_title != null)
 			nvps.add(new BasicNameValuePair("url_title", this.url_title));
 		if (this.device != null)
@@ -92,9 +100,21 @@ public class Pushover implements Serializable {
 		while ((line = rd.readLine()) != null) {
 			responseText += line;
 		}
+		
+		this.log(responseText);
+		Map viewScope = (Map) ExtLibUtil.resolveVariable(FacesContext.getCurrentInstance(), "viewScope");
+		viewScope.put("response", responseText);
 
 		response.close();
 		httpclient.close();
+	}
+	
+	private void log(final String message){
+		Document log = XSPUtil.getCurrentDatabase().createDocument();
+		log.replaceItemValue("Form", "pushlog");
+		log.replaceItemValue("$PublicAccess", "1");
+		log.replaceItemValue("poMessage", message);
+		log.save();
 	}
 
 	public String getUserToken() {

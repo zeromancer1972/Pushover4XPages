@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><note class="form" maintenanceversion="1.1" replicaid="C1257CFE00599083" version="9.0" xmlns="http://www.lotus.com/dxl">
-<noteinfo noteid="19a" sequence="43" unid="0A74B8498185EBC7C1257CBF005D0DBD">
+<noteinfo noteid="19a" sequence="46" unid="0A74B8498185EBC7C1257CBF005D0DBD">
 <created><datetime dst="true">20140419T185623,65+02</datetime></created>
-<modified><datetime dst="true">20140621T184340,16+02</datetime></modified>
-<revised><datetime dst="true">20140621T184340,15+02</datetime></revised>
-<lastaccessed><datetime dst="true">20140621T184340,16+02</datetime></lastaccessed>
+<modified><datetime dst="true">20140629T160233,47+02</datetime></modified>
+<revised><datetime dst="true">20140629T160233,46+02</datetime></revised>
+<lastaccessed><datetime dst="true">20140629T160233,47+02</datetime></lastaccessed>
 <addedtofile><datetime dst="true">20140621T181855,91+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <wassignedby><name>CN=Oliver Busse/O=ulcbs</name></wassignedby>
@@ -13,4 +13,4 @@
 
 
 <item name="$FileNames" sign="true"><text>bstheme.theme</text></item>
-<item name="$CSSFiles"><textlist><text>bs3_tweaks.css</text></textlist></item></note>
+<item name="$CSSFiles"><textlist><text>bs3_tweaks.css</text><text>http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css</text><text>https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css</text></textlist></item></note>

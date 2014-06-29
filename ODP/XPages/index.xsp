@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xp:view xmlns:xp="http://www.ibm.com/xsp/core"
-	xmlns:xc="http://www.ibm.com/xsp/custom">
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core" xmlns:xc="http://www.ibm.com/xsp/custom">
 
 	<xp:this.resources>
 		<xp:script src="/pushover.jss" clientSide="false"></xp:script>
@@ -17,8 +16,8 @@
 					<xp:label value="Custom message" id="label1" for=""
 						disableTheme="true">
 					</xp:label>
-					<xp:inputText value="#{sessionScope.message}"
-						id="profileApptoken" styleClass="form-control">
+					<xp:inputText value="#{sessionScope.message}" id="profileApptoken"
+						styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
 
@@ -26,28 +25,33 @@
 					<xp:label value="Custom URL" id="label2" for=""
 						disableTheme="true">
 					</xp:label>
-					<xp:inputText value="#{sessionScope.url}"
-						id="inputText1" styleClass="form-control">
+					<xp:inputText value="#{sessionScope.url}" id="inputText1"
+						styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
 				<div class="pull-right">
-					<xp:link escape="true" text="Send notification"
-						id="link2" disableTheme="true" styleClass="btn btn-info">
+					<xp:link escape="true" text="Send notification" id="link2"
+						disableTheme="true" styleClass="btn btn-info">
 						<xp:eventHandler event="onclick" submit="true"
-							refreshMode="complete">
+							refreshMode="partial" refreshId="response">
 							<xp:this.action><![CDATA[#{javascript:notify();}]]></xp:this.action>
 						</xp:eventHandler>
 					</xp:link>
 				</div>
+				<div class="clearfix">
+				</div>
+				<xp:div id="response">
+					<xp:label id="label3">
+						<xp:this.value><![CDATA[#{javascript:viewScope.get("response")}]]></xp:this.value>
+					</xp:label>
+				</xp:div>
 			</xp:div>
 			<xp:div xp:key="facetRight">
-				<xc:ccPanel footer="false" hideBody="false"
-					title="More information">
+				<xc:ccPanel footer="false" hideBody="false" title="More information">
 					<xp:this.facets>
 						<xp:div xp:key="body">
-							<xp:link escape="true"
-								text="Pushover Homepage" id="link1" value="http://pushover.net"
-								target="_blank">
+							<xp:link escape="true" text="Pushover Homepage" id="link1"
+								value="http://pushover.net" target="_blank">
 							</xp:link>
 						</xp:div>
 					</xp:this.facets>
