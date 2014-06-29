@@ -6,9 +6,6 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-
-import javax.faces.context.FacesContext;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
@@ -23,7 +20,6 @@ import org.openntf.domino.Document;
 import org.openntf.domino.utils.XSPUtil;
 
 import com.ibm.commons.util.io.json.JsonException;
-import com.ibm.xsp.extlib.util.ExtLibUtil;
 
 /**
  * Refer to https://pushover.net/api for more information
@@ -42,6 +38,7 @@ public class Pushover implements Serializable {
 	private String url_title;
 	private String device;
 	private final String pushoverUrl = "https://api.pushover.net/1/messages.json";
+	private String response;
 
 	public Pushover() {
 
@@ -56,7 +53,7 @@ public class Pushover implements Serializable {
 
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	public void send() throws ClientProtocolException, IOException, JsonException,
 			IllegalStateException {
 		if (this.userToken.equals("") || this.appToken.equals("") || this.message.equals("")) {
@@ -102,9 +99,8 @@ public class Pushover implements Serializable {
 		}
 		
 		this.log(responseText);
-		Map viewScope = (Map) ExtLibUtil.resolveVariable(FacesContext.getCurrentInstance(), "viewScope");
-		viewScope.put("response", responseText);
-
+		this.setResponse(responseText);
+		
 		response.close();
 		httpclient.close();
 	}
@@ -165,6 +161,14 @@ public class Pushover implements Serializable {
 
 	public void setDevice(final String device) {
 		this.device = device;
+	}
+
+	public String getResponse() {
+		return this.response;
+	}
+
+	public void setResponse(final String response) {
+		this.response = response;
 	}
 
 }

@@ -13,6 +13,8 @@ function notify(){
 		p.setDevice(sessionScope.device);
 		
 		p.send();
+		
+		viewScope.put("response", p.getResponse());
 	} catch(e) {
 		
 	}

@@ -4,7 +4,7 @@
 	<xp:this.resources>
 		<xp:script src="/pushover.jss" clientSide="false"></xp:script>
 	</xp:this.resources>
-	
+
 	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
 		navbarTopInverse="true" pageTitle="Pushover Demo">
 		<xp:this.facets>
@@ -30,7 +30,7 @@
 						styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
-				
+
 				<xp:div styleClass="form-group">
 					<xp:label value="URL title" id="label5" for=""
 						disableTheme="true">
@@ -39,22 +39,21 @@
 						styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
-				
+
 				<xp:div styleClass="form-group">
-					<xp:label value="Device" id="label4" for=""
-						disableTheme="true">
+					<xp:label value="Device" id="label4" for="" disableTheme="true">
 					</xp:label>
-					<xp:comboBox id="comboBox1"
-						value="#{sessionScope.device}">
+					<xp:comboBox id="comboBox1" value="#{sessionScope.device}">
 
 						<xp:selectItems>
 							<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
-						</xp:selectItems><xp:selectItems>
+						</xp:selectItems>
+						<xp:selectItems>
 							<xp:this.value><![CDATA[#{javascript:var unid = @DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]");
 var doc:NotesDocument = database.getDocumentByUNID(unid);
 return doc.getItemValue("profileDevices");}]]></xp:this.value>
 						</xp:selectItems>
-						
+
 					</xp:comboBox>
 				</xp:div>
 				<div class="pull-right">
@@ -68,10 +67,14 @@ return doc.getItemValue("profileDevices");}]]></xp:this.value>
 				</div>
 				<div class="clearfix">
 				</div>
+				<br />
 				<xp:div id="response">
-					<xp:label id="label3">
-						<xp:this.value><![CDATA[#{javascript:viewScope.get("response")}]]></xp:this.value>
-					</xp:label>
+					<xp:div styleClass="alert alert-success">
+						<xp:this.rendered><![CDATA[#{javascript:viewScope.get("response")!=null;}]]></xp:this.rendered>
+						<xp:label>
+							<xp:this.value><![CDATA[#{javascript:viewScope.get("response")}]]></xp:this.value>
+						</xp:label>
+					</xp:div>
 				</xp:div>
 			</xp:div>
 			<xp:div xp:key="facetRight">
@@ -90,4 +93,4 @@ return doc.getItemValue("profileDevices");}]]></xp:this.value>
 			</xp:div>
 		</xp:this.facets>
 	</xc:_layoutBS3>
-	</xp:view>
+</xp:view>
