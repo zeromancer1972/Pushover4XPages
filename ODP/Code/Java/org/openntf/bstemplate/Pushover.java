@@ -114,6 +114,8 @@ public class Pushover implements Serializable {
 		log.replaceItemValue("Form", "pushlog");
 		log.replaceItemValue("$PublicAccess", "1");
 		log.replaceItemValue("poMessage", message);
+		if(this.device!=null)
+			log.replaceItemValue("poDevice", this.device);
 		log.save();
 	}
 
@@ -149,11 +151,11 @@ public class Pushover implements Serializable {
 		return url;
 	}
 
-	public String getUrl_title() {
+	public String getUrlTitle() {
 		return url_title;
 	}
 
-	public void setUrl_title(final String url_title) {
+	public void setUrlTitle(final String url_title) {
 		this.url_title = url_title;
 	}
 

@@ -6,26 +6,47 @@
 	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
 		navbarTopInverse="true" pageTitle="Logs">
 		<xp:this.facets>
+			<xp:div xp:key="facetHelp">See what happened</xp:div>
 			<xp:div xp:key="facetMiddle">
-				<xp:viewPanel rows="30" id="viewPanel1" viewStyle="width:100%">
+				<xp:viewPanel rows="30" id="viewPanel1"
+					viewStyle="width:100%">
 					<xp:this.facets>
-						<xp:pager partialRefresh="true" layout="Previous Group Next"
-							xp:key="headerPager" id="pager1">
+						<xp:pager partialRefresh="true"
+							layout="Previous Group Next" xp:key="footerPager" id="pager1">
 						</xp:pager>
 					</xp:this.facets>
+
+
+
+
+
+
 					<xp:this.data>
 						<xp:dominoView var="view1" viewName="logs"></xp:dominoView>
 					</xp:this.data>
 					<xp:viewColumn columnName="$1" id="viewColumn1">
 						<xp:this.converter>
-							<xp:convertDateTime type="both"></xp:convertDateTime>
+							<xp:convertDateTime
+								pattern="MM/dd/yyyy, HH:mm:ss">
+							</xp:convertDateTime>
 						</xp:this.converter>
-						<xp:viewColumnHeader value="created" id="viewColumnHeader1">
+						<xp:viewColumnHeader value="Notification sent"
+							id="viewColumnHeader1">
 						</xp:viewColumnHeader>
 					</xp:viewColumn>
-					<xp:viewColumn columnName="poMessage" id="viewColumn2">
-						<xp:viewColumnHeader value="message" id="viewColumnHeader2">
+					<xp:viewColumn columnName="poMessage"
+						id="viewColumn2">
+						<xp:viewColumnHeader value="Message"
+							id="viewColumnHeader2">
 						</xp:viewColumnHeader>
+					</xp:viewColumn>
+					<xp:viewColumn id="viewColumn3"
+						columnName="poDevice">
+						<xp:this.facets>
+							<xp:viewColumnHeader xp:key="header"
+								id="viewColumnHeader3" value="Device">
+							</xp:viewColumnHeader>
+						</xp:this.facets>
 					</xp:viewColumn>
 				</xp:viewPanel>
 			</xp:div>

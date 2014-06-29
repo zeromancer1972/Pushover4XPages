@@ -111,6 +111,15 @@ return ctx.isDocEditable(currentDocument.getDocument()) && !currentDocument.isEd
 						redisplay="true" autocomplete="off">
 					</xp:inputText>
 				</xp:div>
+				<xp:div styleClass="form-group">
+					<xp:label value="Devices" id="label2"
+						for="profileApptoken" disableTheme="true">
+					</xp:label>
+					<xp:inputText value="#{document1.profileDevices}"
+						id="inputText1" styleClass="form-control"
+						redisplay="true" autocomplete="off" multipleSeparator="," multipleTrim="true">
+					</xp:inputText>
+				</xp:div>
 			</xp:div>
 
 			<xp:div xp:key="facetHelp">Setup</xp:div>
