@@ -33,10 +33,12 @@ public class Pushover implements Serializable {
 	private String appToken;
 	private String message;
 	private String url;
+	private String url_title;
+	private String device;
 	private final String pushoverUrl = "https://api.pushover.net/1/messages.json";
 
 	public Pushover() {
-		
+
 	}
 
 	public Pushover(final String userToken, final String appToken, final String message,
@@ -45,13 +47,13 @@ public class Pushover implements Serializable {
 		this.appToken = appToken;
 		this.message = message;
 		this.url = url;
-		
+
 	}
 
 	public void send() throws ClientProtocolException, IOException, JsonException,
 			IllegalStateException {
 		if (this.userToken.equals("") || this.appToken.equals("") || this.message.equals("")) {
-			
+
 			return;
 		}
 
@@ -74,6 +76,10 @@ public class Pushover implements Serializable {
 		nvps.add(new BasicNameValuePair("token", this.appToken));
 		nvps.add(new BasicNameValuePair("message", this.message));
 		nvps.add(new BasicNameValuePair("url", this.url));
+		if (this.url_title != null)
+			nvps.add(new BasicNameValuePair("url_title", this.url_title));
+		if (this.device != null)
+			nvps.add(new BasicNameValuePair("device", this.device));
 
 		post.setEntity(new UrlEncodedFormEntity(nvps));
 
@@ -86,7 +92,7 @@ public class Pushover implements Serializable {
 		while ((line = rd.readLine()) != null) {
 			responseText += line;
 		}
-		
+
 		response.close();
 		httpclient.close();
 	}
@@ -121,6 +127,22 @@ public class Pushover implements Serializable {
 
 	public String getUrl() {
 		return url;
+	}
+
+	public String getUrl_title() {
+		return url_title;
+	}
+
+	public void setUrl_title(final String url_title) {
+		this.url_title = url_title;
+	}
+
+	public String getDevice() {
+		return device;
+	}
+
+	public void setDevice(final String device) {
+		this.device = device;
 	}
 
 }
