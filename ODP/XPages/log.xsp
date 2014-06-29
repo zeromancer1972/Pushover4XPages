@@ -27,7 +27,7 @@
 					<xp:viewColumn columnName="$1" id="viewColumn1">
 						<xp:this.converter>
 							<xp:convertDateTime
-								pattern="MM/dd/yyyy, HH:mm:ss">
+								pattern="MM/dd/yyyy, h:mm:ss a">
 							</xp:convertDateTime>
 						</xp:this.converter>
 						<xp:viewColumnHeader value="Notification sent"
