@@ -43,7 +43,7 @@
 		<name>DataTable.ViewPanel</name>
 		<property>
 			<name>dataTableStyleClass</name>
-			<value>table table-hover</value>
+			<value>table table-hover table-condensed</value>
 		</property>
 	</control>
 </theme>

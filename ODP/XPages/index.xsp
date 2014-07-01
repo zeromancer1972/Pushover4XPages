@@ -6,7 +6,7 @@
 	</xp:this.resources>
 
 	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
-		navbarTopInverse="true" pageTitle="Pushover Demo">
+		navbarTopInverse="true" pageTitle="Pushover4XPages">
 		<xp:this.facets>
 			<xp:div xp:key="facetMiddle">
 				<div class="well">
@@ -69,7 +69,7 @@ return doc.getItemValue("profileDevices");}]]></xp:this.value>
 				</div>
 				<br />
 				<xp:div id="response">
-					<xp:div styleClass="alert alert-success">
+					<xp:div styleClass="alert #{javascript:return viewScope.get('status')==1 ? 'alert-success':'alert-warning'}">
 						<xp:this.rendered><![CDATA[#{javascript:viewScope.get("response")!=null;}]]></xp:this.rendered>
 						<xp:label>
 							<xp:this.value><![CDATA[#{javascript:viewScope.get("response")}]]></xp:this.value>
@@ -89,7 +89,7 @@ return doc.getItemValue("profileDevices");}]]></xp:this.value>
 				</xc:ccPanel>
 			</xp:div>
 			<xp:div xp:key="facetHelp">
-				Welcome to Pushover in XPages!
+				Welcome to Pushover4XPages!
 			</xp:div>
 		</xp:this.facets>
 	</xc:_layoutBS3>

@@ -4,7 +4,8 @@
 	context.redirectToHome();
 }}]]></xp:this.beforePageLoad>
 	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
-		navbarTopInverse="true" pageTitle="Logs">
+		navbarTopInverse="true" pageTitle="Logs" hideLeftColumn="true"
+		hideRightColumn="true">
 		<xp:this.facets>
 			<xp:div xp:key="facetHelp">See what happened</xp:div>
 			<xp:div xp:key="facetMiddle">

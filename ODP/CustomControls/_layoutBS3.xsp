@@ -13,6 +13,7 @@ if(url.indexOf(".xsp")==-1){
 	<!-- navbar -->
 
 
+	<xp:this.beforeRenderResponse><![CDATA[#{javascript:context.setLocale(Locale.GERMANY);}]]></xp:this.beforeRenderResponse>
 	<nav
 		class="navbar navbar-fixed-top #{javascript:compositeData.navbarTopInverse?'navbar-inverse':'navbar-default'}"
 		role="navigation">
@@ -29,7 +30,7 @@ if(url.indexOf(".xsp")==-1){
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.xsp">
-					<xp:image url="/pushover_icon.png" id="image1" style="margin-top:-6px"></xp:image>
+					<span class="fa fa-coffee"></span>
 					&#160;
 					<xp:text disableTheme="true"
 						value="#{javascript:@DbTitle()}">
@@ -47,8 +48,7 @@ if(url.indexOf(".xsp")==-1){
 					<xp:repeat id="repeat1" rows="30"
 						disableOutputTag="true"
 						value="#{javascript:navigation.navigation}" var="nav">
-						<xp:panel tagName="li"
-							rendered="#{javascript:nav.isVisible();}">
+						<xp:panel tagName="li">
 							<xp:this.styleClass><![CDATA[#{javascript:view.getPageName().indexOf(nav.getUrl())!=-1 ? "active" : ""}]]></xp:this.styleClass>
 
 							<a href="#{javascript:nav.getUrl()}"
@@ -83,9 +83,12 @@ if(url.indexOf(".xsp")==-1){
 	<div id="content" class="#{javascript:compositeData.fullWidth?'container-fluid':'container'}">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<div class="col-lg-8" style="background-color:#fff">
-					<xp:panel tagName="h1" disableTheme="true">
-						<xp:text escape="true" id="computedField3"
+				<xp:div style="background-color:#fff">
+					<xp:this.styleClass><![CDATA[#{javascript:compositeData.hideLeftColumn && compositeData.hideRightColumn ? 'col-lg-12':'col-lg-9'}]]></xp:this.styleClass>
+					<xp:panel tagName="h1" disableTheme="true"
+						rendered="#{javascript:compositeData.pageTitle!=null}">
+
+						<xp:text escape="false" id="computedField3"
 							disableTheme="true"
 							value="#{javascript:compositeData.pageTitle}">
 						</xp:text>
@@ -93,13 +96,16 @@ if(url.indexOf(".xsp")==-1){
 					<xp:callback facetName="facetMiddle"
 						id="facetMiddle">
 					</xp:callback>
-				</div>
-				<div class="col-lg-4" id="rightcol">
-					<xp:callback facetName="facetLeft" id="facetLeft"></xp:callback>
-					<xp:callback facetName="facetRight"
-						id="facetRight">
+				</xp:div>
+				<xp:div styleClass="col-lg-3" id="rightcol">
+					<xp:this.rendered><![CDATA[#{javascript:!(compositeData.hideLeftColumn && compositeData.hideRightColumn)}]]></xp:this.rendered>
+					<xp:callback facetName="facetLeft" id="facetLeft"
+						rendered="#{javascript:!compositeData.hideLeftColumn}">
 					</xp:callback>
-				</div>
+					<xp:callback facetName="facetRight" id="facetRight"
+						rendered="#{javascript:!compositeData.hideRightColumn}">
+					</xp:callback>
+				</xp:div>
 			</div>
 		</div>
 	</div>
@@ -135,7 +141,7 @@ if(url.indexOf(".xsp")==-1){
 							<xp:attr name="data-toggle" value="modal">
 							</xp:attr>
 						</xp:this.attrs>
-						<xp:this.text><![CDATA[#{javascript:"© 2014"}]]></xp:this.text>
+						<xp:this.text><![CDATA[#{javascript:"© 2014 Oliver Busse"}]]></xp:this.text>
 					</xp:link>
 				</li>
 			</ul>

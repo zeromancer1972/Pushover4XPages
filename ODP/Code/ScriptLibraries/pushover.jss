@@ -14,7 +14,9 @@ function notify(){
 		
 		p.send();
 		
-		viewScope.put("response", p.getResponse());
+		var res = p.getResponse();
+		viewScope.put("response", res.getMessage());
+		viewScope.put("status", res.getStatus());
 	} catch(e) {
 		
 	}

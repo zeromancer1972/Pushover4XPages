@@ -38,7 +38,7 @@ public class Pushover implements Serializable {
 	private String url_title;
 	private String device;
 	private final String pushoverUrl = "https://api.pushover.net/1/messages.json";
-	private String response;
+	private PushoverResponse response;
 
 	public Pushover() {
 
@@ -56,8 +56,13 @@ public class Pushover implements Serializable {
 	
 	public void send() throws ClientProtocolException, IOException, JsonException,
 			IllegalStateException {
+		
+		PushoverResponse res = new PushoverResponse();
+		
 		if (this.userToken.equals("") || this.appToken.equals("") || this.message.equals("")) {
-
+			res.setMessage("Please check the fields \"User Token\", \"App Token\" and \"Message\" for valid values");
+			res.setStatus(0);
+			this.setResponse(res);
 			return;
 		}
 
@@ -99,7 +104,10 @@ public class Pushover implements Serializable {
 		}
 		
 		this.log(responseText);
-		this.setResponse(responseText);
+		
+		res.setMessage(responseText);
+		res.setStatus(1);
+		this.setResponse(res);
 		
 		response.close();
 		httpclient.close();
@@ -163,12 +171,14 @@ public class Pushover implements Serializable {
 		this.device = device;
 	}
 
-	public String getResponse() {
-		return this.response;
+	public PushoverResponse getResponse() {
+		return response;
 	}
 
-	public void setResponse(final String response) {
+	public void setResponse(final PushoverResponse response) {
 		this.response = response;
 	}
+
+	
 
 }
