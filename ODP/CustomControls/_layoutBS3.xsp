@@ -13,7 +13,7 @@ if(url.indexOf(".xsp")==-1){
 	<!-- navbar -->
 
 
-	<xp:this.beforeRenderResponse><![CDATA[#{javascript:context.setLocale(Locale.GERMANY);}]]></xp:this.beforeRenderResponse>
+	<xp:this.beforeRenderResponse><![CDATA[#{javascript:context.setLocale(Locale.ENGLISH);}]]></xp:this.beforeRenderResponse>
 	<nav
 		class="navbar navbar-fixed-top #{javascript:compositeData.navbarTopInverse?'navbar-inverse':'navbar-default'}"
 		role="navigation">

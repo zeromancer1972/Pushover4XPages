@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <note default='true' class='icon' xmlns='http://www.lotus.com/dxl' version='9.0'
  maintenanceversion='1.1' replicaid='C1257CFE00599083'>
-<noteinfo noteid='11a' unid='BD94370BEA503287C1257CFE00599098' sequence='9'>
+<noteinfo noteid='11a' unid='BD94370BEA503287C1257CFE00599098' sequence='12'>
 <created><datetime dst='true'>20140621T181817,20+02</datetime></created>
-<modified><datetime dst='true'>20140621T185142,54+02</datetime></modified>
-<revised><datetime dst='true'>20140621T185142,53+02</datetime></revised>
-<lastaccessed><datetime dst='true'>20140621T185142,54+02</datetime></lastaccessed>
+<modified><datetime dst='true'>20140701T192105,94+02</datetime></modified>
+<revised><datetime dst='true'>20140701T192105,93+02</datetime></revised>
+<lastaccessed><datetime dst='true'>20140701T192105,94+02</datetime></lastaccessed>
 <addedtofile><datetime dst='true'>20140621T181817,23+02</datetime></addedtofile></noteinfo>
 <updatedby><name>CN=Oliver Busse/O=ulcbs</name></updatedby>
 <item name='IconBitmap' summary='true'>
@@ -30,9 +30,9 @@ AAAAUEECICABAAD/////+A4DgA==
 <item name='$DefaultClientXPage'><text>index.xsp</text></item>
 <item name='$DefaultXPage'><text>index.xsp</text></item>
 <item name='$Daos'><text>0</text></item>
-<item name='$TITLE'><text>Pushover Demo
-</text></item>
 <item name='$Flags'><text>J!</text></item>
 <item name='$LaunchXPageRunOnServer'><text>0</text></item>
-<item name='$FlagsNoRefresh'><text/></item></note>
+<item name='$FlagsNoRefresh'><text/></item>
+<item name='$TITLE'><text>Pushover Demo
+</text></item></note>
 

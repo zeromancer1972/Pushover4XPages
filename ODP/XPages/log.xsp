@@ -35,7 +35,7 @@
 					</xp:viewColumn>
 					<xp:viewColumn columnName="poMessage"
 						id="viewColumn2">
-						<xp:viewColumnHeader value="Message"
+						<xp:viewColumnHeader value="Response"
 							id="viewColumnHeader2">
 						</xp:viewColumnHeader>
 					</xp:viewColumn>

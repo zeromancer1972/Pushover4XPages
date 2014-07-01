@@ -5,8 +5,8 @@
 		<xp:script src="/pushover.jss" clientSide="false"></xp:script>
 	</xp:this.resources>
 
-	<xc:_layoutBS3 color="#219CF1" navbarBottomInverse="true"
-		navbarTopInverse="true" pageTitle="Pushover4XPages">
+	<xc:_layoutBS3 color="#219CF1" pageTitle="Pushover4XPages"
+		navbarBottomInverse="true" navbarTopInverse="true">
 		<xp:this.facets>
 			<xp:div xp:key="facetMiddle">
 				<div class="well">
@@ -14,18 +14,20 @@
 					Pushover notification service
 				</div>
 				<xp:div styleClass="form-group">
-					<xp:label value="Message" id="label1" for="" disableTheme="true">
+					<xp:label value="Message" id="label1" for=""
+						disableTheme="true">
 					</xp:label>
-					<xp:inputText value="#{sessionScope.message}" id="profileApptoken"
-						styleClass="form-control">
+					<xp:inputText value="#{sessionScope.message}"
+						id="profileApptoken" styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
 
 				<xp:div styleClass="form-group">
-					<xp:label value="URL" id="label2" for="" disableTheme="true">
+					<xp:label value="URL" id="label2" for=""
+						disableTheme="true">
 					</xp:label>
-					<xp:inputText value="#{sessionScope.url}" id="inputText1"
-						styleClass="form-control">
+					<xp:inputText value="#{sessionScope.url}"
+						id="inputText1" styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
 
@@ -33,15 +35,17 @@
 					<xp:label value="URL title" id="label5" for=""
 						disableTheme="true">
 					</xp:label>
-					<xp:inputText value="#{sessionScope.url_title}" id="inputText2"
-						styleClass="form-control">
+					<xp:inputText value="#{sessionScope.url_title}"
+						id="inputText2" styleClass="form-control">
 					</xp:inputText>
 				</xp:div>
 
 				<xp:div styleClass="form-group">
-					<xp:label value="Device" id="label4" for="" disableTheme="true">
+					<xp:label value="Device" id="label4" for=""
+						disableTheme="true">
 					</xp:label>
-					<xp:comboBox id="comboBox1" value="#{sessionScope.device}">
+					<xp:comboBox id="comboBox1"
+						value="#{sessionScope.device}">
 
 						<xp:selectItems>
 							<xp:this.value><![CDATA[#{javascript:"(all)|"}]]></xp:this.value>
@@ -55,16 +59,15 @@ return doc.getItemValue("profileDevices");}]]></xp:this.value>
 					</xp:comboBox>
 				</xp:div>
 				<div class="pull-right">
-					<xp:link escape="true" text="Send notification" id="link2"
-						disableTheme="true" styleClass="btn btn-info">
+					<xp:link escape="true" text="Send notification"
+						id="link2" disableTheme="true" styleClass="btn btn-default">
 						<xp:eventHandler event="onclick" submit="true"
 							refreshMode="partial" refreshId="response">
 							<xp:this.action><![CDATA[#{javascript:notify();}]]></xp:this.action>
 						</xp:eventHandler>
 					</xp:link>
 				</div>
-				<div class="clearfix">
-				</div>
+				<div class="clearfix"></div>
 				<br />
 				<xp:div id="response">
 					<xp:div
