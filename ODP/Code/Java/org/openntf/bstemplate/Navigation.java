@@ -15,7 +15,7 @@ public class Navigation implements Serializable {
 
 	public Navigation() {
 		boolean admin = false;
-		
+
 		this.navigation = new ArrayList<Page>();
 		try {
 			admin = ExtLibUtil.getCurrentDatabase().queryAccessRoles(
@@ -24,11 +24,9 @@ public class Navigation implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.navigation.add(new Page("Setup", "profile.xsp", "fa fa-cogs", false,
-				admin));
-		this.navigation.add(new Page("Logs", "log.xsp", "fa fa-tasks", false,
-				admin));
 
+		this.navigation.add(new Page("Setup", "profile.xsp", "fa fa-cogs", false, admin));
+		this.navigation.add(new Page("Logs", "log.xsp", "fa fa-tasks", false, admin));
 	}
 
 	public List<Page> getNavigation() {

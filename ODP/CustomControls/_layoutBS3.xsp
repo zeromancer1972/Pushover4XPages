@@ -48,7 +48,8 @@ if(url.indexOf(".xsp")==-1){
 					<xp:repeat id="repeat1" rows="30"
 						disableOutputTag="true"
 						value="#{javascript:navigation.navigation}" var="nav">
-						<xp:panel tagName="li">
+						<xp:panel tagName="li"
+							rendered="#{javascript:nav.visible}">
 							<xp:this.styleClass><![CDATA[#{javascript:view.getPageName().indexOf(nav.getUrl())!=-1 ? "active" : ""}]]></xp:this.styleClass>
 
 							<a href="#{javascript:nav.getUrl()}"
@@ -141,7 +142,7 @@ if(url.indexOf(".xsp")==-1){
 							<xp:attr name="data-toggle" value="modal">
 							</xp:attr>
 						</xp:this.attrs>
-						<xp:this.text><![CDATA[#{javascript:"© 2014 Oliver Busse"}]]></xp:this.text>
+						<xp:this.text><![CDATA[#{javascript:"© 2014 Oliver Busse | Apache License 2.0"}]]></xp:this.text>
 					</xp:link>
 				</li>
 			</ul>

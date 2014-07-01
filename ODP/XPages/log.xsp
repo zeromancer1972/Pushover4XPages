@@ -9,13 +9,10 @@
 		<xp:this.facets>
 			<xp:div xp:key="facetHelp">See what happened</xp:div>
 			<xp:div xp:key="facetMiddle">
-				<xp:viewPanel rows="30" id="viewPanel1"
+				<xp:viewPanel rows="15" id="viewPanel1"
 					viewStyle="width:100%">
-					<xp:this.facets>
-						<xp:pager partialRefresh="true"
-							layout="Previous Group Next" xp:key="footerPager" id="pager1">
-						</xp:pager>
-					</xp:this.facets>
+					
+
 
 
 
@@ -25,7 +22,8 @@
 					<xp:this.data>
 						<xp:dominoView var="view1" viewName="logs"></xp:dominoView>
 					</xp:this.data>
-					<xp:viewColumn columnName="$1" id="viewColumn1">
+					<xp:viewColumn columnName="$1" id="viewColumn1"
+						style="width:20%">
 						<xp:this.converter>
 							<xp:convertDateTime
 								pattern="MM/dd/yyyy, h:mm:ss a">
@@ -42,14 +40,19 @@
 						</xp:viewColumnHeader>
 					</xp:viewColumn>
 					<xp:viewColumn id="viewColumn3"
-						columnName="poDevice">
+						columnName="poDevice" style="width:20%">
 						<xp:this.facets>
 							<xp:viewColumnHeader xp:key="header"
 								id="viewColumnHeader3" value="Device">
 							</xp:viewColumnHeader>
 						</xp:this.facets>
 					</xp:viewColumn>
-				</xp:viewPanel>
+					<xp:this.facets>
+
+						<xp:pager partialRefresh="true"
+							layout="Previous Group Next" xp:key="headerPager" id="pager2">
+						</xp:pager>
+					</xp:this.facets></xp:viewPanel>
 			</xp:div>
 		</xp:this.facets>
 

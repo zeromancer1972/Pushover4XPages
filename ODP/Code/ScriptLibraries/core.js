@@ -1,7 +1,7 @@
 // core JS
 
 $(document).ready(function(){
-	$(".longpress").longPress();
+	
 });
 
 function createCookie(name, value, days) {

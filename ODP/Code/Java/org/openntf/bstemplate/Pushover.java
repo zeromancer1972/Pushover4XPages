@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.http.NameValuePair;
@@ -20,6 +21,9 @@ import org.openntf.domino.Document;
 import org.openntf.domino.utils.XSPUtil;
 
 import com.ibm.commons.util.io.json.JsonException;
+import com.ibm.commons.util.io.json.JsonJavaFactory;
+import com.ibm.commons.util.io.json.JsonObject;
+import com.ibm.commons.util.io.json.JsonParser;
 
 /**
  * Refer to https://pushover.net/api for more information
@@ -53,14 +57,15 @@ public class Pushover implements Serializable {
 
 	}
 
-	
-	public void send() throws ClientProtocolException, IOException, JsonException,
-			IllegalStateException {
-		
+	public void send() throws ClientProtocolException, IOException, IllegalStateException,
+			JsonException {
+
 		PushoverResponse res = new PushoverResponse();
-		
+
 		if (this.userToken.equals("") || this.appToken.equals("") || this.message.equals("")) {
-			res.setMessage("Please check the fields \"User Token\", \"App Token\" and \"Message\" for valid values");
+			res.setMessage("");
+			res
+					.addError("Please check the fields \"User Token\", \"App Token\" and \"Message\" for valid values");
 			res.setStatus(0);
 			this.setResponse(res);
 			return;
@@ -102,23 +107,37 @@ public class Pushover implements Serializable {
 		while ((line = rd.readLine()) != null) {
 			responseText += line;
 		}
-		
+
 		this.log(responseText);
-		
-		res.setMessage(responseText);
-		res.setStatus(1);
+
+		// parse JSON
+
+		JsonJavaFactory factory = JsonJavaFactory.instanceEx;
+		JsonObject json = (JsonObject) JsonParser.fromJson(factory, responseText);
+
+		res.setMessage(json.getJsonProperty("request").toString());
+		res.setStatus(Double.valueOf(json.getJsonProperty("status").toString()).intValue());
+		if (res.getStatus() == 0) {
+			Object arrErrors = factory.getProperty(json, "errors");
+			for (Iterator<Object> itError = factory.iterateArrayValues(arrErrors); itError
+					.hasNext();) {
+				String errmsg = (String) itError.next();
+				res.addError(errmsg);
+			}
+		}
+
 		this.setResponse(res);
-		
+
 		response.close();
 		httpclient.close();
 	}
-	
-	private void log(final String message){
+
+	private void log(final String message) {
 		Document log = XSPUtil.getCurrentDatabase().createDocument();
 		log.replaceItemValue("Form", "pushlog");
 		log.replaceItemValue("$PublicAccess", "1");
 		log.replaceItemValue("poMessage", message);
-		if(this.device!=null)
+		if (this.device != null)
 			log.replaceItemValue("poDevice", this.device);
 		log.save();
 	}
@@ -178,7 +197,5 @@ public class Pushover implements Serializable {
 	public void setResponse(final PushoverResponse response) {
 		this.response = response;
 	}
-
-	
 
 }

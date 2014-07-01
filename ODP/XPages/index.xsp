@@ -14,8 +14,7 @@
 					Pushover notification service
 				</div>
 				<xp:div styleClass="form-group">
-					<xp:label value="Custom message" id="label1" for=""
-						disableTheme="true">
+					<xp:label value="Message" id="label1" for="" disableTheme="true">
 					</xp:label>
 					<xp:inputText value="#{sessionScope.message}" id="profileApptoken"
 						styleClass="form-control">
@@ -23,8 +22,7 @@
 				</xp:div>
 
 				<xp:div styleClass="form-group">
-					<xp:label value="Custom URL" id="label2" for=""
-						disableTheme="true">
+					<xp:label value="URL" id="label2" for="" disableTheme="true">
 					</xp:label>
 					<xp:inputText value="#{sessionScope.url}" id="inputText1"
 						styleClass="form-control">
@@ -46,7 +44,7 @@
 					<xp:comboBox id="comboBox1" value="#{sessionScope.device}">
 
 						<xp:selectItems>
-							<xp:this.value><![CDATA[#{javascript:""}]]></xp:this.value>
+							<xp:this.value><![CDATA[#{javascript:"(all)|"}]]></xp:this.value>
 						</xp:selectItems>
 						<xp:selectItems>
 							<xp:this.value><![CDATA[#{javascript:var unid = @DbLookup(@DbName(), "profiles", "profile", "Form", "[RETURNDOCUMENTUNIQUEID]");
@@ -69,21 +67,46 @@ return doc.getItemValue("profileDevices");}]]></xp:this.value>
 				</div>
 				<br />
 				<xp:div id="response">
-					<xp:div styleClass="alert #{javascript:return viewScope.get('status')==1 ? 'alert-success':'alert-warning'}">
+					<xp:div
+						styleClass="alert #{javascript:return viewScope.get('status')==1 ? 'alert-success':'alert-warning'}">
 						<xp:this.rendered><![CDATA[#{javascript:viewScope.get("response")!=null;}]]></xp:this.rendered>
 						<xp:label>
-							<xp:this.value><![CDATA[#{javascript:viewScope.get("response")}]]></xp:this.value>
+							<xp:this.value><![CDATA[#{javascript:if(viewScope.get("status")==1){
+	viewScope.get("response");
+} else {
+	viewScope.get("error");
+}
+}]]></xp:this.value>
 						</xp:label>
 					</xp:div>
 				</xp:div>
 			</xp:div>
 			<xp:div xp:key="facetRight">
-				<xc:ccPanel footer="false" hideBody="false" title="More information">
+				<xc:ccPanel hideBody="false" title="More information"
+					footer="true">
 					<xp:this.facets>
-						<xp:div xp:key="body">
-							<xp:link escape="true" text="Pushover Homepage" id="link1"
-								value="http://pushover.net" target="_blank">
+						<xp:div xp:key="footer">
+							<xp:link escape="true"
+								text="Pushover Homepage" id="link1" value="http://pushover.net"
+								target="_blank">
 							</xp:link>
+						</xp:div>
+						<xp:div xp:key="body">
+							<div>
+								Pushover uses a simple REST API to
+								receive messages from your application
+								and send them to devices running our
+								device clients. To simplify the user
+								registration process and usage of our
+								API, there are no complicated
+								out-of-band authentication mechanisms or
+								per-call signing libraries required,
+								such as OAuth. HTTP libraries available
+								in just about every language, or even
+								from the command line, can be used
+								without any custom modules or extra
+								dependencies needed.
+							</div>
 						</xp:div>
 					</xp:this.facets>
 				</xc:ccPanel>
