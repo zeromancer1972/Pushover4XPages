@@ -1,0 +1,11 @@
+OpenNTF Pushover4XPages
+(C)Copyright 2014 Oliver Busse
+
+This product includes software contributed to
+OpenNTF Alliance (http://www.OpenNTF.org/)
+
+This product is licensed under the terms of the Apache 2.0 license.
+
+The project contains the following 3rd party code:
+
+1. The product contains Apache Commons HTTP Client, which is available from http://hc.apache.org/httpcomponents-client-ga/, and which is under the Apache 2.0 license.
